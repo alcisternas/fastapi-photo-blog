@@ -5,7 +5,7 @@ pipeline {
     REGION        = 'southamerica-west1'
     REPO_NAME     = 'apps'
     SERVICE_NAME  = 'photoblog'
-    PROJECT_ID    = 'mi-proyecto-gcp'
+    PROJECT_ID    = 'durable-ring-471120-i8'
     REGISTRY_HOST = "${REGION}-docker.pkg.dev"
     BUCKET_NAME   = 'photoblog-uploads'
     DB_CONN       = 'postgresql://user:pass@cloudsql-instance:5432/photodb'
