@@ -4,11 +4,11 @@ pipeline {
   environment {
     REGION        = 'southamerica-west1'
     REPO_NAME     = 'apps'
-    SERVICE_NAME  = 'photoblog'
+    SERVICE_NAME  = 'photo-drop'
     PROJECT_ID    = 'durable-ring-471120-i8'
     REGISTRY_HOST = "${REGION}-docker.pkg.dev"
-    BUCKET_NAME   = 'photoblog-uploads'
-    DB_CONN       = 'postgresql://user:pass@cloudsql-instance:5432/photodb'
+    BUCKET_NAME   = 'photo-drop-bucket'
+    DB_CONN       = 'postgresql://photouser:PhotoPass123@/photodb?host=/cloudsql/durable-ring-471120-i8:southamerica-west1:photodb-instance'
   }
 
   stages {

@@ -7,13 +7,16 @@ app = FastAPI(title="Photo Drop+", version="2.0.0")
 
 BUCKET_NAME = os.getenv("BUCKET_NAME", "photo-drop-bucket")
 
+
 @app.get("/")
 def root():
     return {"message": "Bienvenido a Photo Drop+, sube tu foto con un comentario!"}
 
+
 @app.get("/healthz")
 def healthz():
     return {"status": "ok"}
+
 
 @app.post("/upload")
 async def upload(
@@ -30,6 +33,7 @@ async def upload(
         return {"message": "Foto subida con éxito!", "url": url}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/photos")
 def get_photos():
