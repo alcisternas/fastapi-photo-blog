@@ -47,20 +47,21 @@ pipeline {
       }
     }
 
+  // ...
     stage('Deploy Cloud Run') {
       steps {
-        sh '''
+        sh """
           gcloud run deploy ${SERVICE_NAME} \
             --image ${IMAGE} \
             --platform managed \
             --region ${REGION} \
             --allow-unauthenticated \
-            --add-cloudsql-instances ${CLOUD_SQL_CONN} \ 
+            --add-cloudsql-instances ${CLOUD_SQL_CONN} \
             --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_USER=${DB_USER},DB_PASS=${DB_PASS},DB_NAME=${DB_NAME}
-
-        '''
+        """
       }
     }
+// ...
   }
 
   post {
