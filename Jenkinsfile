@@ -57,7 +57,7 @@ pipeline {
             --region ${REGION} \
             --allow-unauthenticated \
             --add-cloudsql-instances ${CLOUD_SQL_CONN} \
-            --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_USER=${DB_USER},DB_PASS=${DB_PASS},DB_NAME=${DB_NAME}
+            --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_USER=${DB_USER},DB_PASS=${DB_PASS},DB_NAME=${DB_NAME},CLOUD_SQL_CONN=${CLOUD_SQL_CONN}
         """
       }
     }
