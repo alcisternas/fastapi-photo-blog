@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException
 from app.gcs import upload_image_to_bucket
@@ -92,4 +91,3 @@ async def upload_photo(
 @app.get("/healthz")
 def healthz():
     return {"status": "ok"}
->>>>>>> parent of bc697c6 (photo-blog)
