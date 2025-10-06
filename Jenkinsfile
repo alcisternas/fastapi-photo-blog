@@ -8,13 +8,10 @@ pipeline {
     PROJECT_ID    = 'possible-sun-471215-d3'
     REGISTRY_HOST = "${REGION}-docker.pkg.dev"
     BUCKET_NAME   = 'photo-drop-bucket-ac'
-#//  DB_CONN       = 'postgresql://photouser:yystww55s@/photodb?host=/cloudsql/possible-sun-471215-d3:us-central1:photodb-instance'
-#//  NUEVAS VARIABLES SIMPLIFICADAS
     DB_USER = 'photouser'
     DB_PASS = 'yystww55s'
     DB_NAME = 'photodb'
     
- #   // Nombre completo de la conexión de la instancia
     CLOUD_SQL_CONN = "${PROJECT_ID}:${REGION}:photodb-instance"
   }
 
@@ -58,7 +55,6 @@ pipeline {
             --platform managed \
             --region ${REGION} \
             --allow-unauthenticated \
-#          --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_CONN=${DB_CONN}
             --add-cloudsql-instances ${CLOUD_SQL_CONN} \ # <-- ACTIVA EL PROXY INTEGRADO
             --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_USER=${DB_USER},DB_PASS=${DB_PASS},DB_NAME=${DB_NAME}
 
