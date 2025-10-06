@@ -8,11 +8,15 @@ pipeline {
     PROJECT_ID    = 'possible-sun-471215-d3'
     REGISTRY_HOST = "${REGION}-docker.pkg.dev"
     BUCKET_NAME   = 'photo-drop-bucket-ac'
+<<<<<<< HEAD
     DB_USER = 'photouser'
     DB_PASS = 'yystww55s'
     DB_NAME = 'photodb'
     
     CLOUD_SQL_CONN = "${PROJECT_ID}:${REGION}:photodb-instance"
+=======
+    DB_CONN       = 'postgresql://photouser:yystww55s@/photodb?host=/cloudsql/possible-sun-471215-d3:us-central1:photodb-instance'
+>>>>>>> parent of 5fd6345 (modifica conexion a DB)
   }
 
   stages {
@@ -56,9 +60,14 @@ pipeline {
             --platform managed \
             --region ${REGION} \
             --allow-unauthenticated \
+<<<<<<< HEAD
             --add-cloudsql-instances ${CLOUD_SQL_CONN} \
             --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_USER=${DB_USER},DB_PASS=${DB_PASS},DB_NAME=${DB_NAME},CLOUD_SQL_CONN=${CLOUD_SQL_CONN}
         """
+=======
+            --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_CONN=${DB_CONN}
+        '''
+>>>>>>> parent of 5fd6345 (modifica conexion a DB)
       }
     }
 // ...

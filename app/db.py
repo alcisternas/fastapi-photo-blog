@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 # db.py (VERSIÓN COMPLETA Y CORREGIDA)
+=======
+>>>>>>> parent of 5fd6345 (modifica conexion a DB)
 import os
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
+<<<<<<< HEAD
 # Variables de entorno
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASS")
@@ -53,3 +57,28 @@ def list_photos():
     finally:
         cur.close()
         conn.close()
+=======
+DB_CONN = os.getenv("DB_CONN")  # ej: postgresql://user:pass@host:5432/photodb
+
+
+def save_metadata(username, caption, url):
+    conn = psycopg2.connect(DB_CONN)
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO photos (username, caption, url) VALUES (%s, %s, %s)",
+        (username, caption, url),
+    )
+    conn.commit()
+    cur.close()
+    conn.close()
+
+
+def list_photos():
+    conn = psycopg2.connect(DB_CONN)
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    cur.execute("SELECT username, caption, url FROM photos ORDER BY id DESC")
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    return rows
+>>>>>>> parent of 5fd6345 (modifica conexion a DB)
