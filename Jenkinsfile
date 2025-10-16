@@ -2,13 +2,13 @@ pipeline {
   agent any
 
   environment {
-    REGION        = 'southamerica-west1'
+    REGION        = 'us-central1'
     REPO_NAME     = 'apps'
-    SERVICE_NAME  = 'photo-drop'
-    PROJECT_ID    = 'durable-ring-471120-i8'
+    SERVICE_NAME  = 'photo-drop-ac1'
+    PROJECT_ID    = 'possible-sun-471215-d3'
     REGISTRY_HOST = "${REGION}-docker.pkg.dev"
-    BUCKET_NAME   = 'photo-drop-bucket'
-    DB_CONN       = 'postgresql://photouser:PhotoPass123@/photodb?host=/cloudsql/durable-ring-471120-i8:southamerica-west1:photodb-instance'
+    BUCKET_NAME   = 'photo-drop-bucket-ac'
+    DB_CONN       = 'postgresql://photouser:yystww55s@/photodb?host=/cloudsql/possible-sun-471215-d3:us-central1-c:photodb-instance'
   }
 
   stages {
