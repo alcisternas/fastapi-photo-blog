@@ -8,7 +8,7 @@ pipeline {
     PROJECT_ID    = 'possible-sun-471215-d3'
     REGISTRY_HOST = "${REGION}-docker.pkg.dev"
     BUCKET_NAME   = 'photo-drop-bucket-ac'
-    DB_CONN       = 'postgresql://photouser:yystww55s@/photodb?host=/cloudsql/possible-sun-471215-d3:us-central1-c:photodb-instance'
+    DB_CONN       = 'postgresql://photouser:yystww55s@/photodb?host=/cloudsql/possible-sun-471215-d3:us-central1:photodb-instance'
   }
 
   stages {
@@ -51,7 +51,9 @@ pipeline {
             --platform managed \
             --region ${REGION} \
             --allow-unauthenticated \
-            --set-env-vars BUCKET_NAME=${BUCKET_NAME},DB_CONN=${DB_CONN}
+            --add-cloudsql-instances ${PROJECT_ID}:us-central1:photodb-instance \
+            --set-env-vars BUCKET_NAME=${BUCKET_NAME} \
+            --set-env-vars DB_CONN=${DB_CONN}
         '''
       }
     }
